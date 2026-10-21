@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<html>
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cashout - 3 Games</title>
@@ -55,42 +53,4 @@ function startSlash(){
  const fruits=["🍎","🍉","🍊","🍓","🍌","🥝","🍍"];
  function spawn(){
   let f=document.createElement('div'); f.className='fruit'; f.innerText=fruits[Math.floor(Math.random()*fruits.length)];
-  f.style.left=Math.random()*85+'%'; f.style.top='100%'; document.getElementById('game').appendChild(f);
-  let y=100, speed=2+Math.random()*3;
-  let move=setInterval(()=>{y-=speed; f.style.top=y+'%'; if(y<-15){clearInterval(move); f.remove();}},30);
-  f.onclick=()=>{ addReward(f.style.left,f.style.top); f.remove(); clearInterval(move); }
- }
- gameInterval=setInterval(spawn,700);
-}
-
-// GAME 2 - SPIN
-function startSpin(){
- document.getElementById('game').innerHTML='<div id="spinWheel"></div><button class="main" onclick="doSpin()" style="margin-top:20px">SPIN & WIN!</button><p style="color:#aaa">Spin every 2 sec - 3x faster than before!</p>';
-}
-let spinning=false;
-function doSpin(){
- if(spinning) return; spinning=true;
- let w=document.getElementById('spinWheel'); let rot=720+Math.random()*720; w.style.transform='rotate('+rot+'deg)';
- setTimeout(()=>{ addReward('50%','40%'); spinning=false; },2000);
-}
-
-// GAME 3 - LUCKY BOXES (NEW - Better than Tap!)
-function startBoxes(){
- document.getElementById('game').innerHTML='<h2 style="margin:0">🎁 Pick a Box!</h2><p style="color:#aaa">One box has BIG reward!</p><div class="boxes"><div class="box" onclick="openBox(this)">🎁</div><div class="box" onclick="openBox(this)">🎁</div><div class="box" onclick="openBox(this)">🎁</div></div><p style="margin-top:20px;color:#00ff88">New boxes every 2 sec!</p>';
- gameInterval=setInterval(()=>{ if(currentGame==3) startBoxes(); },2500);
-}
-function openBox(el){
- if(el.innerText!='🎁') return;
- let prizes=['💰','🪙','💎','💵','😢']; let pick=prizes[Math.floor(Math.random()*prizes.length)];
- el.innerText=pick; addReward('50%','50%');
- setTimeout(()=>{ el.innerText='🎁'; },800);
-}
-
-function cashout(){
- if(bal>=1){ let opay=prompt('Enter Opay number:'); if(opay){alert('Cashout request sent!'); bal=0; document.getElementById('bal').innerText='0.000';} } else {alert('Minimum $1 to cashout');}
-}
-
-startSlash();
-</script>
-</body>
-</html>
+  f.style.left=Math.random
